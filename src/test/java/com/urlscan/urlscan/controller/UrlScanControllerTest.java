@@ -27,8 +27,8 @@ public class UrlScanControllerTest {
 
     @Test
     public void testMalwareGetUrl() throws Exception {
-        String url = "/urlinfo/host/original";
-        String hostname = "test";
+        String url = "/urlinfo/www.somedb.com:8080/search?q=ancient";
+        String hostname = "test:8080";
         int port = 80;
         String queryString = "test";
         String path = "test";
@@ -38,10 +38,12 @@ public class UrlScanControllerTest {
 
 //    @Test
 //    public void testValidGetUrl() throws Exception {
-//        String url = "/urlinfo/host/original";
-//        String hostname_and_port = "test";
-//        String original_path_and_query_string = "test";
-//        when(this.checkUrlService.isValidUrl(hostname_and_port, original_path_and_query_string)).thenReturn(true);
+//        String url = "/urlinfo/www.somedb.com:8080/search?q=ancient";
+//        String hostname = "test:8080";
+//        int port = 80;
+//        String queryString = "test";
+//        String path = "test";
+//        when(this.checkUrlService.isValidUrl(hostname, port, queryString, path)).thenReturn(true);
 //        mockMvc.perform(get(url)).andDo(print()).andExpect(status().isOk());
 //    }
 

@@ -14,9 +14,10 @@ import java.util.List;
 public interface UrlRepository extends JpaRepository<MalwareUrl, Integer> {
 //    boolean findByMalwareUrlContaining(String hostname_and_port);
 
-    @Query("select m from MalwareUrl m where m.host like %?1 or  m.port like %?2 " +
-            "or  m.path like %?3 or  m.queryString like %?4")
-    boolean findByMalwareUrlContaining(String host,
-                                       int port, String path, String queryString
-                                       );
+
+    @Query("Select m from MalwareUrl m where m.host like %:host% " +
+            "and m.path like %:path% and m.port = :port and m.queryString like %:queryString%")
+    List<MalwareUrl> findByMalwareUrlContaining(String host,
+                                       String path, int port, String queryString
+    );
 }
