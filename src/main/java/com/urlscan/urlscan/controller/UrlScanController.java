@@ -1,7 +1,6 @@
 package com.urlscan.urlscan.controller;
 
-import com.urlscan.urlscan.model.UserUrl;
-import com.urlscan.urlscan.service.CheckUrlService;
+import com.urlscan.urlscan.model.MalwareUrl;
 import com.urlscan.urlscan.service.ICheckUrlService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +20,9 @@ public class UrlScanController {
     }
 
     @GetMapping(value = "/{hostname_and_port}/{original_path_and_query_string}", produces = "application/json")
-    public ResponseEntity<UserUrl> getUrl(@PathVariable String hostname_and_port,
-                                          @PathVariable String original_path_and_query_string) {
-        boolean result = checkUrlService.isValidUrl();
+    public ResponseEntity<MalwareUrl> getUrl(@PathVariable String hostname_and_port,
+                                             @PathVariable String original_path_and_query_string) {
+        boolean result = checkUrlService.isValidUrl(hostname_and_port,original_path_and_query_string );
         if (result == true) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
