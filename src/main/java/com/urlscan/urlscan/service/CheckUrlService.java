@@ -14,9 +14,10 @@ public class CheckUrlService implements ICheckUrlService {
     @Autowired
     private UrlRepository urlRepository;
 
-    public boolean isValidUrl(String hostname_and_port,
-                              String original_path_and_query_string) {
-        boolean result = urlRepository.existsById(1);
+    public boolean isValidUrl(String hostname , int port,String queryString,
+                              String originalPath) {
+        boolean result = urlRepository.findByMalwareUrlContaining(hostname, port,
+                queryString, originalPath);
         return result;
     }
 }

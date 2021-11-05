@@ -32,11 +32,12 @@ public class CheckUrlServiceTest {
 
     @Test
     public void testIsValidUrl() {
-        String hostname_and_port = "test";
-        String original_path_and_query_string = "test";
+        String hostname = "test";
+        int port = 80;
+        String queryString = "test";
+        String path = "test";
         when(this.userUrlRepository.existsById(1)).thenReturn(false);
-        boolean result = checkUrlService.isValidUrl(hostname_and_port,
-                original_path_and_query_string);
+        boolean result = checkUrlService.isValidUrl(hostname, port, queryString, path);
         assertFalse(result);
     }
 }
