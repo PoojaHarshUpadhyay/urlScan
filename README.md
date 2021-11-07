@@ -25,13 +25,13 @@ Junit
 [GET] - 
 http://localhost:8080/urlinfo/www.somedb.com:8080/search?q=ancient
 http://localhost:8080/urlinfo/www.somedb.com:8080/search
-Expected response - It is valid url
+Expected response - "It is valid url"
 
 2- Malware url example -
 [GET] -
 http://localhost:8080/urlinfo/test:9999/history?q=spampath
 http://localhost:8080/urlinfo/test:9999/history
-Expected response - It is malware url
+Expected response - "It is malware url"
 
 
 ## Questions- 
