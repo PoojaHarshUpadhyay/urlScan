@@ -36,15 +36,4 @@ public class UrlScanControllerTest {
         mockMvc.perform(get(url)).andDo(print()).andExpect(status().isBadRequest());
     }
 
-//    @Test
-//    public void testValidGetUrl() throws Exception {
-//        String url = "/urlinfo/www.somedb.com:8080/search?q=ancient";
-//        String hostname = "test:8080";
-//        int port = 80;
-//        String queryString = "test";
-//        String path = "test";
-//        when(this.checkUrlService.isValidUrl(hostname, port, queryString, path)).thenReturn(true);
-//        mockMvc.perform(get(url)).andDo(print()).andExpect(status().isOk());
-//    }
-
 }

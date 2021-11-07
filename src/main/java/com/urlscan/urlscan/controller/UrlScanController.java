@@ -24,12 +24,22 @@ public class UrlScanController {
     public ResponseEntity getUrl(@PathVariable String hostname_and_port,
                                  @PathVariable String original_path,
                                  HttpServletRequest request) throws MalformedURLException {
+        if (hostname_and_port.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please pass host name and port");
+        }
+        if (original_path.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please pass the original path");
+        }
         String[] temp = hostname_and_port.split(":");
         String hostName = temp[0];
         int port = Integer.parseInt(temp[1]);
-        String[] tempQuery = request.getQueryString().split("=");
-        String query = tempQuery[1];
-
+        String query;
+        if (request.getQueryString() == null) {
+            query = "";
+        } else {
+            String[] tempQuery = request.getQueryString().split("=");
+            query = tempQuery[1];
+        }
         boolean result = checkUrlService.isValidUrl(hostName, port, original_path, query);
         if (result) {
             return ResponseEntity.status(HttpStatus.OK).body("It is valid url");
